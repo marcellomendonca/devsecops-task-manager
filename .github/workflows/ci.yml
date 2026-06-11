@@ -40,3 +40,12 @@ jobs:
       - name: Executar testes automatizados
         run: |
           PYTHONPATH=todo_project pytest -q
+      - name: Análise estática com Bandit
+        run: |
+          pip install bandit
+          bandit -r todo_project || true
+
+      - name: Análise de dependências com pip-audit
+        run: |
+          pip install pip-audit
+          pip-audit || true
